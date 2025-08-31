@@ -43,3 +43,22 @@
     </a>
   {{/if}}
 </article>
+<article class="post-card flex gap-4 p-4 border rounded-lg">
+  {{#if feature_image}}
+    <div class="flex-shrink-0">
+      <img src="{{img_url feature_image size="s"}}" alt="{{title}}" class="w-20 h-20 object-cover rounded">
+    </div>
+  {{/if}}
+  
+  <div class="flex-1">
+    <h3 class="font-semibold text-lg mb-2">
+      <a href="{{url}}" class="hover:text-blue-600">{{title}}</a>
+    </h3>
+    
+    {{> post-card-meta-top}}
+    
+    {{#if excerpt}}
+      <p class="text-gray-600 text-sm">{{excerpt words="15"}}</p>
+    {{/if}}
+  </div>
+</article>

@@ -15,3 +15,16 @@
     </div>
   {{/if}}
 {{/unless}}
+<div class="subscribe-cta bg-gray-50 p-6 rounded-lg text-center">
+  <h3 class="text-xl font-semibold mb-2">
+    {{#if @custom.subscribe_cta_headline}}
+      {{@custom.subscribe_cta_headline}}
+    {{else}}
+      Subscribe to our newsletter
+    {{/if}}
+  </h3>
+  
+  <p class="text-gray-600 mb-4">Get the latest updates delivered directly to your inbox.</p>
+  
+  {{> subscribe-form}}
+</div>

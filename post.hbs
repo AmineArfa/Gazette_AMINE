@@ -1,0 +1,18 @@
+
+{{!< default}}
+
+{{> post-hero}}
+
+<main class="px-5 sm:px-6">
+  <div class="max-w-content mx-auto">
+    <article class="prose prose-lg max-w-none">
+      {{content}}
+    </article>
+    
+    {{> post-tags}}
+    {{> author-box}}
+    {{> social-share}}
+  </div>
+</main>
+
+{{> comments}}

@@ -1,9 +1,9 @@
 {{!-- Set fallback image URL: use primary tag feature image if post has no featured image --}}
 {{#if image_url}}
-  {{assign "final_image_url" image_url}}
+  {{#assign "final_image_url"}}{{image_url}}{{/assign}}
 {{else}}
   {{#if primary_tag.feature_image}}
-    {{assign "final_image_url" primary_tag.feature_image}}
+    {{#assign "final_image_url"}}{{primary_tag.feature_image}}{{/assign}}
   {{/if}}
 {{/if}}
 

@@ -1,0 +1,88 @@
+
+{
+  "name": "industrial-intelligence-dawn",
+  "description": "A clean, modern Ghost theme for Industrial Intelligence Daily",
+  "version": "1.0.0",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Industrial Intelligence Daily",
+    "email": "admin@industrialintelligence.com"
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "responsive"
+  ],
+  "config": {
+    "posts_per_page": 25,
+    "image_sizes": {
+      "xs": {
+        "width": 150
+      },
+      "s": {
+        "width": 300
+      },
+      "m": {
+        "width": 600
+      },
+      "l": {
+        "width": 1000
+      },
+      "xl": {
+        "width": 2000
+      }
+    },
+    "custom": {
+      "background_color": {
+        "type": "color",
+        "default": "#ffffff"
+      },
+      "header_logo_position": {
+        "type": "select",
+        "options": ["left", "center"],
+        "default": "left"
+      },
+      "use_portal_links": {
+        "type": "boolean",
+        "default": true
+      },
+      "post_card_comment_count": {
+        "type": "boolean",
+        "default": true
+      },
+      "post_title_alignment": {
+        "type": "select",
+        "options": ["left", "center"],
+        "default": "left"
+      },
+      "hero_posts_layout": {
+        "type": "select",
+        "options": ["grid", "list"],
+        "default": "grid"
+      },
+      "show_events": {
+        "type": "boolean",
+        "default": true
+      },
+      "show_podcasts": {
+        "type": "boolean",
+        "default": true
+      },
+      "show_writers": {
+        "type": "boolean",
+        "default": true
+      },
+      "show_newsletters": {
+        "type": "boolean",
+        "default": true
+      },
+      "subscribe_cta_headline": {
+        "type": "text",
+        "default": "Subscribe to our newsletter"
+      }
+    }
+  }
+}

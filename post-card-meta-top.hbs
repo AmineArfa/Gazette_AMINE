@@ -48,3 +48,19 @@
     </div>
   {{/if}}
 </div>
+<div class="post-meta flex items-center gap-2 text-sm text-gray-500 mb-2">
+  {{#if primary_author}}
+    <span>{{primary_author.name}}</span>
+  {{/if}}
+  
+  <span>•</span>
+  
+  <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM DD, YYYY"}}</time>
+  
+  {{#if @custom.post_card_comment_count}}
+    {{#if comment_id}}
+      <span>•</span>
+      <span>{{plural comment_count empty="No comments" singular="1 comment" plural="% comments"}}</span>
+    {{/if}}
+  {{/if}}
+</div>
