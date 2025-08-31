@@ -82,6 +82,14 @@
       "subscribe_cta_headline": {
         "type": "text",
         "default": "Subscribe to our newsletter"
+      },
+      "subscribe_cta_subheading": {
+        "type": "text",
+        "default": "Stay updated with our latest posts"
+      },
+      "text_color": {
+        "type": "color",
+        "default": "#333333"
       }
     }
   }

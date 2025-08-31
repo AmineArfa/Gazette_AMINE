@@ -67,3 +67,14 @@
     </section>
   {{/if}}
 {{/get}}
+<section class="hero-section py-16">
+  <div class="max-w-site mx-auto px-5 sm:px-6">
+    <div class="text-center">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">{{@site.title}}</h1>
+      {{#if @site.description}}
+        <p class="text-xl text-gray-600 mb-8">{{@site.description}}</p>
+      {{/if}}
+    </div>
+    {{> sections/1-post}}
+  </div>
+</section>

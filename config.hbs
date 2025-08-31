@@ -32,3 +32,13 @@
     }
   }
 </script>
+{{!-- Custom theme configuration --}}
+<style>
+  {{#if @custom.background_color}}
+    body { background-color: {{@custom.background_color}}; }
+  {{/if}}
+  
+  {{#if @custom.text_color}}
+    body { color: {{@custom.text_color}}; }
+  {{/if}}
+</style>

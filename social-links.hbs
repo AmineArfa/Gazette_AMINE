@@ -58,3 +58,13 @@
 {{#contentFor "body"}}
   <script>window.socials = { rss: '/rss/' }</script>
 {{/contentFor}}
+{{#if @site.facebook}}
+  <a href="{{facebook_url @site.facebook}}" class="hover:text-brand" target="_blank" rel="noopener">
+    {{> icon name="brand-facebook" icon_class="size-5"}}
+  </a>
+{{/if}}
+{{#if @site.twitter}}
+  <a href="{{twitter_url @site.twitter}}" class="hover:text-brand" target="_blank" rel="noopener">
+    {{> icon name="brand-x" icon_class="size-5"}}
+  </a>
+{{/if}}

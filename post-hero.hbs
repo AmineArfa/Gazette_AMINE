@@ -71,3 +71,33 @@
 </section>
 
 {{> post-info info_class=info_class}}
+<section class="post-hero py-16">
+  <div class="max-w-content mx-auto px-5 sm:px-6">
+    <header class="text-center mb-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">{{title}}</h1>
+      {{> post-card-meta-top}}
+      
+      {{#if feature_image}}
+        <figure class="mt-8">
+          {{> image
+            image_type="post"
+            image_class="w-full max-h-96 object-cover rounded-lg"
+            image_url=feature_image
+            alt=title
+            sizes="(max-width: 1000px) 100vw, 1000px"
+          }}
+        </figure>
+      {{else if primary_tag.feature_image}}
+        <figure class="mt-8">
+          {{> image
+            image_type="tag"
+            image_class="w-full max-h-96 object-cover rounded-lg"
+            image_url=primary_tag.feature_image
+            alt=primary_tag.name
+            sizes="(max-width: 1000px) 100vw, 1000px"
+          }}
+        </figure>
+      {{/if}}
+    </header>
+  </div>
+</section>

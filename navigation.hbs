@@ -9,3 +9,12 @@
     </li>
   {{/foreach}}
 </ul>
+{{#if @site.navigation}}
+  <ul class="nav-menu flex items-center gap-6">
+    {{#foreach @site.navigation}}
+      <li class="nav-item">
+        <a href="{{url absolute="true"}}" class="nav-link hover:text-brand">{{label}}</a>
+      </li>
+    {{/foreach}}
+  </ul>
+{{/if}}
