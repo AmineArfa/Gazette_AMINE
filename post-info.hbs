@@ -36,3 +36,20 @@
     </div>
   </div>
 </div>
+<div class="post-info">
+  <div class="post-meta">
+    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM DD, YYYY"}}</time>
+    {{#if reading_time}}
+      {{> icon name="clock" icon_class="size-4"}}
+      <span>{{reading_time}} min read</span>
+    {{/if}}
+  </div>
+  
+  {{#if tags}}
+    <div class="post-tags">
+      {{#foreach tags}}
+        <a href="{{url}}" class="tag">{{name}}</a>
+      {{/foreach}}
+    </div>
+  {{/if}}
+</div>

@@ -21,3 +21,16 @@
     {{/if}}
   {{/get}}
 {{/if}}
+{{#get "posts" filter="tag:podcast" limit="6"}}
+  {{#if posts}}
+    <section class="podcasts-section">
+      {{> section-heading title="Latest Podcasts"}}
+      
+      <div class="podcasts-grid">
+        {{#foreach posts}}
+          {{> "cards/podcast-card"}}
+        {{/foreach}}
+      </div>
+    </section>
+  {{/if}}
+{{/get}}

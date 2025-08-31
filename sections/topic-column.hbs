@@ -23,3 +23,16 @@
     </section>
   {{/if}}
 {{/get}}
+<section class="topic-column">
+  {{> section-heading title=title}}
+  
+  {{#get "posts" filter=filter limit="6"}}
+    {{#if posts}}
+      <div class="topic-column-posts">
+        {{#foreach posts}}
+          {{> "cards/post-card-vertical"}}
+        {{/foreach}}
+      </div>
+    {{/if}}
+  {{/get}}
+</section>

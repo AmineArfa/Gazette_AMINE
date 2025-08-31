@@ -50,3 +50,28 @@
     
   </div>
 </article>
+<article class="post-card-vertical">
+  {{#if feature_image}}
+    <a href="{{url}}" class="post-image">
+      {{> image
+        image_type="post"
+        image_class="post-featured-image"
+        image_url=feature_image
+        size_xs=true
+        size_s=true
+        size_m=true
+        sizes="400px"
+      }}
+    </a>
+  {{/if}}
+  
+  <div class="post-content">
+    <h3><a href="{{url}}">{{title}}</a></h3>
+    {{#if excerpt}}<p>{{excerpt}}</p>{{/if}}
+    
+    <div class="post-meta">
+      <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM DD, YYYY"}}</time>
+      {{#if reading_time}}<span>{{reading_time}} min read</span>{{/if}}
+    </div>
+  </div>
+</article>

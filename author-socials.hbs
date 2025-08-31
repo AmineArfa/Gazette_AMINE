@@ -70,3 +70,23 @@
     </li>
   {{/if}}
 </ul>
+{{#if website}}
+  <a href="{{website}}" target="_blank" rel="noopener">
+    {{> icon name="link" icon_class="size-4"}}
+    Website
+  </a>
+{{/if}}
+
+{{#if twitter}}
+  <a href="https://twitter.com/{{twitter}}" target="_blank" rel="noopener">
+    {{> icon name="brand-x" icon_class="size-4"}}
+    Twitter
+  </a>
+{{/if}}
+
+{{#if facebook}}
+  <a href="https://www.facebook.com/{{facebook}}" target="_blank" rel="noopener">
+    {{> icon name="brand-facebook" icon_class="size-4"}}
+    Facebook
+  </a>
+{{/if}}

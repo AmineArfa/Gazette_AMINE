@@ -51,3 +51,28 @@
     {{/if}}
   </div>
 </article>
+<article class="podcast-card">
+  {{#if feature_image}}
+    <a href="{{url}}" class="podcast-image">
+      {{> image
+        image_type="post"
+        image_class="podcast-featured-image"
+        image_url=feature_image
+        size_xs=true
+        size_s=true
+        size_m=true
+        sizes="300px"
+      }}
+    </a>
+  {{/if}}
+  
+  <div class="podcast-content">
+    <h3><a href="{{url}}">{{title}}</a></h3>
+    {{#if excerpt}}<p>{{excerpt}}</p>{{/if}}
+    
+    <div class="podcast-meta">
+      {{> icon name="microphone" icon_class="size-4"}}
+      <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM DD, YYYY"}}</time>
+    </div>
+  </div>
+</article>

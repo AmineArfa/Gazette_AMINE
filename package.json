@@ -90,6 +90,10 @@
       "text_color": {
         "type": "color",
         "default": "#333333"
+      },
+      "border_color": {
+        "type": "color",
+        "default": "#e5e7eb"
       }
     }
   }

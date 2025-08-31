@@ -21,3 +21,34 @@
     {{/if}}
   {{/get}}
 {{/if}}
+{{#primary_author}}
+  <section class="related-author">
+    {{> section-heading title="About the Author"}}
+    
+    <div class="author-info">
+      {{#if profile_image}}
+        <a href="{{url}}" class="author-avatar">
+          {{> image
+            image_type="author"
+            image_class="rounded-full"
+            image_url=profile_image
+            size_xs=true
+            size_s=true
+            size_m=true
+            sizes="80px"
+          }}
+        </a>
+      {{/if}}
+      
+      <div class="author-details">
+        <h3><a href="{{url}}">{{name}}</a></h3>
+        {{#if bio}}<p>{{bio}}</p>{{/if}}
+        
+        <a href="{{url}}" class="view-posts">
+          View all posts
+          {{> icon name="chevron-right" icon_class="size-4"}}
+        </a>
+      </div>
+    </div>
+  </section>
+{{/primary_author}}

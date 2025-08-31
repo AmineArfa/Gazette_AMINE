@@ -44,3 +44,16 @@
     </section>
   {{/if}}
 {{/get}}
+<section class="topic-8-posts">
+  {{> section-heading title=title}}
+  
+  {{#get "posts" filter=filter limit="8"}}
+    {{#if posts}}
+      <div class="topic-posts-grid">
+        {{#foreach posts}}
+          {{> "cards/post-card-vertical"}}
+        {{/foreach}}
+      </div>
+    {{/if}}
+  {{/get}}
+</section>

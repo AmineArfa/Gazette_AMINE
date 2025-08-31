@@ -24,3 +24,14 @@
     {{/foreach}}
   </div>
 </div>
+{{#get "posts" limit="4"}}
+  {{#if posts}}
+    <section class="section-4-posts">
+      <div class="posts-grid">
+        {{#foreach posts}}
+          {{> "cards/post-card-vertical-main"}}
+        {{/foreach}}
+      </div>
+    </section>
+  {{/if}}
+{{/get}}

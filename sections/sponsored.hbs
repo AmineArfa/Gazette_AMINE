@@ -41,3 +41,16 @@
     {{/if}}
   {{/get}}
 {{/is}}
+{{#get "posts" filter="tag:sponsored" limit="4"}}
+  {{#if posts}}
+    <section class="sponsored-section">
+      {{> section-heading title="Sponsored Content"}}
+      
+      <div class="sponsored-grid">
+        {{#foreach posts}}
+          {{> "cards/post-card-vertical"}}
+        {{/foreach}}
+      </div>
+    </section>
+  {{/if}}
+{{/get}}

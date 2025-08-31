@@ -15,3 +15,14 @@
     {{/foreach}}
   </div>
 </div>
+{{#get "posts" limit="6"}}
+  {{#if posts}}
+    <section class="section-6-posts">
+      <div class="posts-grid">
+        {{#foreach posts}}
+          {{> "cards/post-card-vertical-main"}}
+        {{/foreach}}
+      </div>
+    </section>
+  {{/if}}
+{{/get}}

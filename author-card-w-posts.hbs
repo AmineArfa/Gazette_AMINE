@@ -47,3 +47,27 @@
     {{/if}}
   {{/get}}
 </div>
+<div class="author-card-with-posts">
+  {{#if profile_image}}
+    <div class="author-avatar">
+      {{> image
+        image_type="author"
+        image_class="rounded-full"
+        image_url=profile_image
+        size_xs=true
+        size_s=true
+        size_m=true
+        sizes="60px"
+      }}
+    </div>
+  {{/if}}
+  
+  <div class="author-info">
+    <h3><a href="{{url}}">{{name}}</a></h3>
+    {{#if bio}}<p>{{bio}}</p>{{/if}}
+    
+    {{#if count.posts}}
+      <span class="post-count">{{plural count.posts empty='No posts' singular='% post' plural='% posts'}}</span>
+    {{/if}}
+  </div>
+</div>

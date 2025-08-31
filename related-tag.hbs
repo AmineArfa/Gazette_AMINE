@@ -21,3 +21,26 @@
     {{/if}}
   {{/get}}
 {{/if}}
+{{#primary_tag}}
+  <section class="related-tag">
+    {{> section-heading title="More in {{name}}"}}
+    
+    {{#get "posts" limit="3" filter="tags:{{slug}}+id:-{{../id}}"}}
+      {{#if posts}}
+        <div class="related-posts">
+          {{#foreach posts}}
+            <article class="related-post">
+              <h4><a href="{{url}}">{{title}}</a></h4>
+              <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM DD, YYYY"}}</time>
+            </article>
+          {{/foreach}}
+        </div>
+        
+        <a href="{{url}}" class="view-tag">
+          View all posts in {{name}}
+          {{> icon name="chevron-right" icon_class="size-4"}}
+        </a>
+      {{/if}}
+    {{/get}}
+  </section>
+{{/primary_tag}}

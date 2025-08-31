@@ -33,3 +33,21 @@
     cta_class="mt-6"
   }}
 </aside>
+<aside class="post-sidebar">
+  {{#if @site.secondary_navigation}}
+    <nav class="sidebar-nav">
+      {{navigation type="secondary"}}
+    </nav>
+  {{/if}}
+  
+  {{#get "posts" limit="5" filter="id:-{{id}}"}}
+    {{#if posts}}
+      <div class="related-posts">
+        <h3>Related Posts</h3>
+        {{#foreach posts}}
+          {{> "cards/post-card-horizontal-sm"}}
+        {{/foreach}}
+      </div>
+    {{/if}}
+  {{/get}}
+</aside>

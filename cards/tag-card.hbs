@@ -8,3 +8,16 @@
     {{> icon name="chevron-right" icon_class="size-3.25 stroke-[3]"}}
   </p>
 </a>
+<div class="tag-card">
+  <a href="{{url}}" class="tag-link">
+    {{> icon name="tag" icon_class="size-4"}}
+    <span>{{name}}</span>
+    {{#if count.posts}}
+      <span class="tag-count">{{count.posts}}</span>
+    {{/if}}
+  </a>
+  
+  {{#if description}}
+    <p class="tag-description">{{description}}</p>
+  {{/if}}
+</div>

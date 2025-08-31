@@ -13,3 +13,24 @@
     </a>
   </nav>
 {{/match}}
+{{#if pagination}}
+  <nav class="pagination">
+    {{#if pagination.prev}}
+      <a href="{{page_url pagination.prev}}" class="pagination-prev">
+        {{> icon name="chevron-left" icon_class="size-4"}}
+        Previous
+      </a>
+    {{/if}}
+    
+    <span class="pagination-info">
+      Page {{pagination.page}} of {{pagination.pages}}
+    </span>
+    
+    {{#if pagination.next}}
+      <a href="{{page_url pagination.next}}" class="pagination-next">
+        Next
+        {{> icon name="chevron-right" icon_class="size-4"}}
+      </a>
+    {{/if}}
+  </nav>
+{{/if}}

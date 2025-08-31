@@ -29,3 +29,24 @@
     </div>
   </section>
 {{/match}}
+<section class="page-hero">
+  {{#if feature_image}}
+    <div class="hero-image">
+      {{> image
+        image_type="page"
+        image_class="hero-featured-image"
+        image_url=feature_image
+        size_s=true
+        size_m=true
+        size_l=true
+        size_xl=true
+        sizes="100vw"
+      }}
+    </div>
+  {{/if}}
+  
+  <div class="hero-content">
+    <h1>{{title}}</h1>
+    {{#if excerpt}}<p class="hero-excerpt">{{excerpt}}</p>{{/if}}
+  </div>
+</section>

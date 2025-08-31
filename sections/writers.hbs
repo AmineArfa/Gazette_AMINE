@@ -36,3 +36,38 @@
     {{/foreach}}
   {{/get}}
 {{/if}}
+{{#get "authors" limit="6"}}
+  {{#if authors}}
+    <section class="writers-section">
+      {{> section-heading title="Our Writers"}}
+      
+      <div class="writers-grid">
+        {{#foreach authors}}
+          <div class="writer-card">
+            {{#if profile_image}}
+              <a href="{{url}}" class="writer-avatar">
+                {{> image
+                  image_type="author"
+                  image_class="rounded-full"
+                  image_url=profile_image
+                  size_xs=true
+                  size_s=true
+                  size_m=true
+                  sizes="120px"
+                }}
+              </a>
+            {{/if}}
+            
+            <div class="writer-info">
+              <h4><a href="{{url}}">{{name}}</a></h4>
+              {{#if bio}}<p>{{bio}}</p>{{/if}}
+              {{#if count.posts}}
+                <span class="post-count">{{plural count.posts empty='No posts' singular='% post' plural='% posts'}}</span>
+              {{/if}}
+            </div>
+          </div>
+        {{/foreach}}
+      </div>
+    </section>
+  {{/if}}
+{{/get}}

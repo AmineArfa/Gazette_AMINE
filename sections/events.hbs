@@ -21,3 +21,16 @@
     {{/if}}
   {{/get}}
 {{/if}}
+{{#get "posts" filter="tag:events" limit="6"}}
+  {{#if posts}}
+    <section class="events-section">
+      {{> section-heading title="Upcoming Events"}}
+      
+      <div class="events-grid">
+        {{#foreach posts}}
+          {{> "cards/event-card"}}
+        {{/foreach}}
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
