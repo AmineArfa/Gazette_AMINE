@@ -1,0 +1,69 @@
+Latest version. Dawn theme.
+
+Since there’s no option to browse images that have been uploaded and since I am planning on using the same featured image for all post assigned to the same tag - I need some help with getting this to work.
+
+Setup:
+I have four tags. I have hundreds of posts.
+A lot of posts will be assigned to the same tag.
+I therefore need to auto-apply, based on URL (https://example.com/images/featured_image_one.png), a featured image to the post based on what tag it is assigned to.
+
+Not sure I understand how to do this correctly and where to add such code. If anyone can help me out, I would appreciate it.
+
+{{^has tag="#ghost"}}
+    {{#if feature_image}}
+		<!-- add feature image to post -->
+    {{/if}}
+{{/has}}
+
+@thebear.dev Whoops, sorry about that! You have to include tags in the {{#get}} helper here. {{#get "posts" filter="featured:true" limit="all" include="tags" as |featured|}} Also small updates (like class names, and image sizes) for the replacement code: {{#if primary_tag.feature_image}} <div…
+
+1.5k
+views
+
+3
+links
+
+
+
+minimaluminium
+Staff
+Apr 2021
+Hey @thebear.dev,
+
+You could use Ghost’s tag image feature for this, instead of setting the images by absolute URLs.
+
+This is the section where Dawn theme displays the featured image for posts. You could replace this with the following.
+
+{{#if primary_tag.feature_image}}
+    {{#unless no_image}}
+        <div class="single-media kg-width-{{width}} u-placeholder horizontal">
+            <img class="lazyload u-object-fit"
+                data-srcset="{{img_url primary_tag.feature_image size="s"}} 400w, {{img_url primary_tag.feature_image size="m"}} 750w, {{img_url primary_tag.feature_image size="l"}} 960w, {{img_url primary_tag.feature_image size="xl"}} 1140w"
+                data-sizes="auto" src="{{img_url primary_tag.feature_image size="l"}}"
+                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                alt="{{title}}">
+        </div>
+    {{/unless}}
+{{/if}}
+And select the tag featured image in the admin.
+
+
+
+thebear.dev
+Apr 2021
+Hi @minimaluminium,
+
+Does using that code mean that I upload the image once and based on the first tag added to the post, that featured image will be used on all other posts with the same tag set as the first tag?
+
+The main idea here is to avoid uploading the same featured image like 500 times.
+
+If you could clarify, I would appreciate it. Thanks :blush:
+
+
+
+minimaluminium
+Staff
+Apr 2021
+You’re right, you will only have to select an image for the primary tag once, and the image will be used for all your posts with this same primary tag (set as the first tag).
+
+And when you want to change the image in the future, you can update the image only in one place which is the tag’s edit screen in the admin.
