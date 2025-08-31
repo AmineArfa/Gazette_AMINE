@@ -65,6 +65,43 @@
         {{!-- Figcaption --}}
         {{#if feature_image_caption}}<figcaption class="font-sans mt-1 text-xs opacity-80 text-typ-tone [&>a]:underline [&>a]:underline-offset-2 [&>a:hover]:text-brand text-center">{{feature_image_caption}}</figcaption>{{/if}}
       </figure>
+    {{else}}
+      {{!-- Fallback to primary tag featured image if post has no featured image --}}
+      {{#if tags}}
+        {{#foreach tags limit="1"}}
+          {{#if feature_image}}
+            <figure class="w-full h-full relative {{#if ../media_class}}{{../media_class}}{{else}}max-w-content{{/if}}">
+              {{#if ../image_sizes}}
+                {{> image
+                  image_type="post"
+                  image_class="w-full object-cover rounded-theme aspect-16/9 bg-bgr-tone"
+                  image_url=feature_image
+                  size_s=true
+                  size_m=true
+                  size_l=true
+                  size_xl=true
+                  sizes=../image_sizes
+                  loading="eager"
+                }}
+              {{else}}
+                {{> image
+                  image_type="post"
+                  image_class="w-full object-cover rounded-theme aspect-16/9 bg-bgr-tone"
+                  image_url=feature_image
+                  size_s=true
+                  size_m=true
+                  size_l=true
+                  size_xl=true
+                  sizes="(max-width: 767px) 90vw, 720px"
+                  loading="eager"
+                }}
+              {{/if}}
+              {{!-- Figcaption for tag image --}}
+              <figcaption class="font-sans mt-1 text-xs opacity-80 text-typ-tone [&>a]:underline [&>a]:underline-offset-2 [&>a:hover]:text-brand text-center">Image from {{name}} tag</figcaption>
+            </figure>
+          {{/if}}
+        {{/foreach}}
+      {{/if}}
     {{/if}}
 
   </div>
