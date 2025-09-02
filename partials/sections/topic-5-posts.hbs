@@ -1,6 +1,6 @@
 
 {{!-- Get featured posts that are not live-tagged for the main position --}}
-{{#get "posts" filter="tag:{{slug}}+tag:-[hash-podcast,hash-event,hash-newsletter,hash-sponsored,live]+featured:true" include="tags,authors,tiers" limit="1"}}
+{{#get "posts" filter="tag:{{slug}}+tag:-[hash-podcast,hash-event,hash-newsletter,hash-sponsored]+tag:-live+featured:true" include="tags,authors,tiers" limit="1"}}
   {{#if posts}}
     {{!-- Store the main post ID to exclude it from the secondary query --}}
     {{#foreach posts}}
@@ -30,12 +30,14 @@
                     {{> cards/post-card-vertical
                       card_class=""
                       excerpt_class="hidden"
+                      image_loading="lazy"
                     }}
                   {{/foreach}}
                   {{#foreach posts from="2" to="2"}}
                     {{> cards/post-card-vertical
                       card_class="border-t border-brd-soft pt-5"
                       excerpt_class="hidden"
+                      image_loading="lazy"
                     }}
                   {{/foreach}}
                 </div>
@@ -44,12 +46,14 @@
                     {{> cards/post-card-vertical
                       card_class=""
                       excerpt_class="hidden"
+                      image_loading="lazy"
                     }}
                   {{/foreach}}
                   {{#foreach posts from="4" to="4"}}
                     {{> cards/post-card-vertical
                       card_class="border-t border-brd-soft pt-5"
                       excerpt_class="hidden"
+                      image_loading="lazy"
                     }}
                   {{/foreach}}
                 </div>
