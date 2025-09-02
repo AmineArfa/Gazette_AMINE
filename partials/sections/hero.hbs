@@ -1,5 +1,5 @@
 
-{{#get "posts" filter="{{posts_filter}}" include="tags,authors,tiers" limit="6"}}
+{{#get "posts" filter="{{posts_filter}}+tag:-live" include="tags,authors,tiers" limit="6"}}
   {{#if posts}}
     <section class="px-5 sm:px-6 mt-6" data-hero-posts="{{posts.length}}" data-hero-layout="{{@custom.hero_posts_layout}}">
       {{!-- Flexible layout based on number of posts (up to 6) --}}
