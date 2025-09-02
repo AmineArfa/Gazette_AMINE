@@ -17,7 +17,7 @@
               <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 <div class="sm:col-span-2 pb-5 border-b border-brd-soft lg:pb-0 lg:border-b-0 lg:pr-5 lg:border-r" data-topic-main>
                   {{!-- Main featured post (not live-tagged) --}}
-                  {{#with ../../posts.0}}
+                  {{#with (first ../../posts)}}
                     {{> cards/post-card-vertical
                       card_class="[&_[data-post-card-type]]:lg:scale-175"
                       title_class="lg:text-3xl"
