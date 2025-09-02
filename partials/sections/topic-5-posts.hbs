@@ -17,13 +17,13 @@
               <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 <div class="sm:col-span-2 pb-5 border-b border-brd-soft lg:pb-0 lg:border-b-0 lg:pr-5 lg:border-r" data-topic-main>
                   {{!-- Main featured post (not live-tagged) --}}
-                  {{#with (first ../../posts)}}
+                  {{#foreach ../../posts from="1" to="1"}}
                     {{> cards/post-card-vertical
                       card_class="[&_[data-post-card-type]]:lg:scale-175"
                       title_class="lg:text-3xl"
                       excerpt_class="md:text-lg"
                     }}
-                  {{/with}}
+                  {{/foreach}}
                 </div>
                 <div class="flex flex-col gap-5 pb-5 border-b border-brd-soft sm:pb-0 sm:border-b-0 sm:pr-5 sm:border-r" data-topic-secondary="1">
                   {{#foreach posts from="1" to="1"}}
