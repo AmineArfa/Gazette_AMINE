@@ -2,8 +2,18 @@
   {{!-- Authors --}}
   <div class="inline" data-post-card-authors>
     <span class="opacity-75 font-body font-medium lowercase italic">{{t "By"}}</span>
-    {{#foreach authors}}{{#unless @first}}<span class="opacity-75 font-body font-medium lowercase italic">{{#if @last}} and{{else}},{{/if}}</span>{{/unless}}
-      <a href="{{url}}">{{name}}</a>{{/foreach}}
+    {{#foreach authors}}
+      {{!-- Author image --}}
+      {{#unless @first}}
+        <span class="opacity-75 font-body font-medium lowercase italic">{{#if @last}} and{{else}},{{/if}}</span>
+      {{/unless}}
+      <img 
+        src="{{img_url profile_image size='s'}}"
+        alt="{{name}}"
+        class="object-cover size-20 rounded-full aspect-square"
+      />
+      <a href="{{url}}">{{name}}</a>
+    {{/foreach}}
   </div>
 
   {{!-- Date --}}
