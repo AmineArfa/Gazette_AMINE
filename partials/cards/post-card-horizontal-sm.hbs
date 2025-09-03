@@ -41,28 +41,5 @@
       </figure>
       {{> post-card-type-icon}}
     </a>
-  {{else}}
-    {{!-- Fallback to primary tag featured image if post has no featured image --}}
-    {{#if tags}}
-      {{#foreach tags limit="1"}}
-        {{#if feature_image}}
-          <a href="{{../url}}" class="{{../media_class}} relative group self-start flex-1 sm:size-auto max-w-20 bg-bgr-tone aspect-[1/1]">
-            <figure class="block rounded-theme overflow-hidden" role="none">
-              {{> image
-                image_type="post"
-                image_class="aspect-[1/1] object-cover rounded-[inherit] w-full group-hover:opacity-90 transition-opacity"
-                image_url=feature_image
-                size_s=true
-                size_m=true
-                size_l=true
-                sizes="(max-width: 767px) 25vw, 600px"
-                loading=../image_loading
-              }}  
-            </figure>
-            {{> post-card-type-icon}}
-          </a>
-        {{/if}}
-      {{/foreach}}
-    {{/if}}
   {{/if}}
 </article>
