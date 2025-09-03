@@ -3,29 +3,87 @@
   <div class="max-w-site mx-auto flex flex-col gap-5 lg:flex-row">
     
     {{!-- Main post: First non-live post --}}
-    {{#foreach posts limit="10"}}
+    {{#foreach posts limit="15"}}
       {{#unless (has tag="live")}}
         {{#if @first}}
-          {{> cards/post-card-vertical-main 
-            card_class="flex-2 pb-5 border-b border-brd-soft lg:pb-0 lg:border-b-0 lg:pr-5 lg:border-r"
-            image_loading="eager"
-          }}
+          <article class="{{post_class}} flex-2 pb-5 border-b border-brd-soft lg:pb-0 lg:border-b-0 lg:pr-5 lg:border-r relative flex flex-col gap-4 text-typ" data-post-card{{#if featured}} data-featured{{/if}}>
+            {{!-- Feature Image --}}
+            {{#if feature_image}}
+              <a href="{{url}}" class="relative group">
+                <figure class="block rounded-theme overflow-hidden" role="none">
+                  <img class="aspect-[3/2] object-cover rounded-[inherit] w-full group-hover:opacity-90 transition-opacity" 
+                       src="{{img_url feature_image size="l"}}" 
+                       alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                       loading="eager">
+                  {{> post-card-type-icon wrapper_class="scale-200 md:scale-300"}}
+                </figure>
+              </a>
+            {{/if}}
+
+            <div class="bg-bgr flex-1 flex flex-col gap-2.5{{#if feature_image}} lg:pl-8 lg:ml-16 lg:-mt-14 lg:pt-6 z-10{{/if}}" data-post-card-content>
+              
+              {{!-- Post meta: tag / visibility / comment count --}}
+              {{> post-card-meta-top element_class="mb-1"}}
+
+              {{!-- Title --}}
+              <h1 class="text-xl font-semibold md:text-2xl lg:text-3xl xl:text-4xl" data-post-card-title>
+                <a href="{{url}}" class="hover:underline underline-offset-4 inline-flex gap-2 items-start">
+                  <span>{{title}}</span>
+                </a>
+              </h1>
+
+              {{!-- Excerpt --}}
+              {{#if excerpt}}
+                <p class="text-base leading-normal md:text-lg mb-0.5 text-balance" data-post-card-excerpt>
+                  {{excerpt words="30"}}
+                </p>
+              {{/if}}
+
+              {{!-- Post meta: authors and date --}}
+              {{> post-card-meta-bottom}}
+              
+            </div>
+          </article>
         {{/if}}
       {{/unless}}
     {{/foreach}}
 
-    {{!-- Secondary posts: Show next 5 posts, including live posts --}}
+    {{!-- Secondary posts: Show posts 2-6, including live posts --}}
     <div class="flex-1 flex flex-col gap-8 md:grid md:grid-cols-2 lg:flex lg:flex-col lg:gap-6">
-      {{#get "posts" limit="6"}}
-        {{#foreach posts}}
-          {{#if (gt @index 0)}}
-            {{> cards/post-card-horizontal-sm
-              card_class="not-last-of-type:border-b border-brd-soft not-last-of-type:pb-6"
-              image_loading="eager"
-            }}
+      {{#foreach posts from="2" to="6"}}
+        <article class="{{post_class}} not-last-of-type:border-b border-brd-soft not-last-of-type:pb-6 flex gap-4 text-typ" data-post-card{{#if featured}} data-featured{{/if}}>
+          
+          {{!-- Feature Image --}}
+          {{#if feature_image}}
+            <a href="{{url}}" class="relative group flex-shrink-0">
+              <figure class="block rounded-theme overflow-hidden" role="none">
+                <img class="aspect-square object-cover rounded-[inherit] w-20 h-20 group-hover:opacity-90 transition-opacity" 
+                     src="{{img_url feature_image size="s"}}" 
+                     alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                     loading="eager">
+                {{> post-card-type-icon wrapper_class="scale-150"}}
+              </figure>
+            </a>
           {{/if}}
-        {{/foreach}}
-      {{/get}}
+
+          <div class="flex-1 flex flex-col justify-center gap-1.5" data-post-card-content>
+            
+            {{!-- Post meta: tag --}}
+            {{> post-card-meta-top element_class="mb-1"}}
+
+            {{!-- Title --}}
+            <h2 class="text-sm font-semibold leading-tight md:text-base" data-post-card-title>
+              <a href="{{url}}" class="hover:underline underline-offset-2 inline-flex gap-2 items-start">
+                <span>{{title}}</span>
+              </a>
+            </h2>
+
+            {{!-- Post meta: authors and date --}}
+            {{> post-card-meta-bottom}}
+            
+          </div>
+        </article>
+      {{/foreach}}
     </div>
 
   </div>
