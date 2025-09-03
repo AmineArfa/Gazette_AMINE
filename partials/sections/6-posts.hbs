@@ -11,9 +11,9 @@
       {{/foreach}}
       
       <div class="flex-1 flex flex-col gap-8 md:grid md:grid-cols-2 lg:flex lg:flex-col lg:gap-6">  
-        {{!-- Get remaining posts for secondary positions --}}
-        {{#get "posts" filter="featured:true" limit="6" offset="1" as |secondary_posts|}}
-          {{#foreach secondary_posts limit="5"}}
+        {{!-- Get remaining posts for secondary positions with same filter --}}
+        {{#get "posts" filter="featured:true+tag:-live" limit="5" offset="1" as |secondary_posts|}}
+          {{#foreach secondary_posts}}
             {{> cards/post-card-horizontal-sm
               card_class="not-last-of-type:border-b border-brd-soft not-last-of-type:pb-6"
               image_loading="eager"
