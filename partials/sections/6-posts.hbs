@@ -1,24 +1,26 @@
 
-<div class="max-w-site mx-auto flex flex-col gap-5 lg:flex-row">
-  {{! Main post - find and show first non-live post }}
-  {{#foreach posts limit="10"}}
-    {{#unless (has tag="live")}}
-      {{#if @first}}
+<section class="inner-space not-last-of-type:border-b border-brd-soft" data-section="6-posts">
+  <div class="max-w-site mx-auto flex flex-col gap-5 lg:flex-row">
+    
+    {{! Main post - first non-live post }}
+    {{#get "posts" filter="tag:-live" limit="1"}}
+      {{#foreach posts}}
         {{> cards/post-card-vertical-main 
           card_class="flex-2 pb-5 border-b border-brd-soft lg:pb-0 lg:border-b-0 lg:pr-5 lg:border-r"
           image_loading="eager"
         }}
-      {{/if}}
-    {{/unless}}
-  {{/foreach}}
+      {{/foreach}}
+    {{/get}}
 
-  <div class="flex-1 flex flex-col gap-8 md:grid md:grid-cols-2 lg:flex lg:flex-col lg:gap-6">  
-    {{! Secondary posts - show posts 2-6 in chronological order (including live posts) }}
-    {{#foreach posts from="2" to="6"}}
-      {{> cards/post-card-horizontal-sm
-        card_class="not-last-of-type:border-b border-brd-soft not-last-of-type:pb-6"
-        image_loading="eager"
-      }}
-    {{/foreach}}
+    {{! Secondary posts - show first 5 latest posts (including live) }}
+    <div class="flex-1 flex flex-col gap-8 md:grid md:grid-cols-2 lg:flex lg:flex-col lg:gap-6">
+      {{#foreach posts limit="5"}}
+        {{> cards/post-card-horizontal-sm
+          card_class="not-last-of-type:border-b border-brd-soft not-last-of-type:pb-6"
+          image_loading="eager"
+        }}
+      {{/foreach}}
+    </div>
+
   </div>
-</div>
+</section>
