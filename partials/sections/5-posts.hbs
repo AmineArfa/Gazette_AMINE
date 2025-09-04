@@ -3,6 +3,7 @@
     {{> cards/post-card-vertical-main 
       card_class="flex-2 pb-5 border-b border-brd-soft lg:pb-0 lg:border-b-0 lg:pr-5 lg:border-r"
       image_loading="eager"
+      fallback_image=(or feature_image primary_tag.feature_image)
     }}
   {{/foreach}}
 
@@ -12,11 +13,13 @@
         {{> cards/post-card-vertical 
           card_class="border-b border-brd-soft pb-6 [&_p]:hidden"
           image_loading="eager"
+          fallback_image=(or feature_image primary_tag.feature_image)
         }}
       {{else}}
         {{> cards/post-card-horizontal-sm
           card_class="not-last-of-type:border-b border-brd-soft not-last-of-type:pb-6"
           image_loading="eager"
+          fallback_image=(or feature_image primary_tag.feature_image)
         }}
       {{/match}}  
     {{/foreach}}

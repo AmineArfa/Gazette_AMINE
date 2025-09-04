@@ -1,12 +1,12 @@
 <article class="{{post_class}} {{card_class}} relative flex flex-col gap-4 text-typ" data-post-card{{#if featured}} data-featured{{/if}}>
   {{!-- Feature Image --}}
-  {{#if feature_image}}
+  {{#if (or feature_image fallback_image)}}
     <a href="{{url}}" class="relative group {{media_class}}">
       <figure class="block rounded-theme overflow-hidden" role="none">
         {{> image
           image_type="post"
           image_class="aspect-[3/2] object-cover rounded-[inherit] w-full group-hover:opacity-90 transition-opacity"
-          image_url=feature_image
+          image_url=(or feature_image fallback_image)
           size_s=true
           size_m=true
           size_l=true
