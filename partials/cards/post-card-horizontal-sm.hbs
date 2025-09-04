@@ -1,65 +1,62 @@
-<article class="{{post_class}} {{card_class}} relative flex gap-4 md:gap-8 text-typ" data-post-card{{#if featured}} data-featured{{/if}}>
-  <div class="bg-bgr flex flex-col gap-1.5 sm:gap-2 flex-3 md:flex-2 overflow-hidden" data-post-card-content>
-
-    {{!-- Post meta: tag / visibility / comment count --}}
-    {{> post-card-meta-top
-      element_class="mb-0.5 md:mb-1 data-post-card-meta:hidden"
-    }}
-
-    {{!-- Title --}}
-    <h3 class="text-base sm:text-lg font-semibold leading-[1.15]" data-post-card-title>
-      <a href="{{url}}" class="hover:underline decoration-2 underline-offset-4">
-        <span>{{title}}</span>
-      </a>
-    </h3>
-
-    {{!-- Excerpt --}}
-    {{#if excerpt}}
-      <p class="text-base leading-snug mb-0.5 hidden" data-post-card-excerpt>
-        {{excerpt words="30"}}
-      </p>
-    {{/if}}
-
-    {{!-- Post meta: authors and date --}}
-    {{> post-card-meta-bottom }}
-  </div>  
-
-  {{!-- Feature Image --}}
-  {{#if feature_image}}
-    <a href="{{url}}" class="{{media_class}} relative group self-start flex-1 sm:size-auto max-w-20 bg-bgr-tone aspect-[1/1]">
-      <figure class="block rounded-theme overflow-hidden" role="none">
-        {{> image
-          image_type="post"
-          image_class="aspect-[1/1] object-cover rounded-[inherit] w-full group-hover:opacity-90 transition-opacity"
-          image_url=feature_image
-          size_s=true
-          size_m=true
-          size_l=true
-          sizes="(max-width: 767px) 25vw, 600px"
-          loading=image_loading
-        }}  
-      </figure>
-      {{> post-card-type-icon}}
-    </a>
-  {{/if}}
-</article>
 
 <article class="{{post_class}} {{card_class}} relative flex gap-4 text-typ" data-post-card{{#if featured}} data-featured{{/if}}>
   {{!-- Feature Image --}}
-  {{#if (or feature_image fallback_image)}}
+  {{#if feature_image}}
     <a href="{{url}}" class="relative group {{media_class}}">
       <figure class="block rounded-theme overflow-hidden" role="none">
         {{> image
           image_type="post"
-          image_class="w-20 h-16 md:w-24 md:h-20 object-cover rounded-[inherit] group-hover:opacity-90 transition-opacity"
-          image_url=(or feature_image fallback_image)
+          image_class="w-full aspect-[4/3] object-cover rounded-[inherit] group-hover:opacity-90 transition-opacity"
+          image_url=feature_image
           size_s=true
           size_m=true
-          sizes="(max-width: 767px) 80px, 96px"
+          size_l=true
+          sizes="(max-width: 767px) 90vw, (max-width: 1200px) 33vw, 400px"
           loading=image_loading
         }}
       </figure>
-      {{> post-card-type-icon wrapper_class="scale-75"}}
+      {{> post-card-type-icon wrapper_class="scale-110 md:scale-125"}}
+    </a>
+  {{else if fallback_image}}
+    <a href="{{url}}" class="relative group {{media_class}}">
+      <figure class="block rounded-theme overflow-hidden" role="none">
+        {{> image
+          image_type="post"
+          image_class="w-full aspect-[4/3] object-cover rounded-[inherit] group-hover:opacity-90 transition-opacity"
+          image_url=fallback_image
+          size_s=true
+          size_m=true
+          size_l=true
+          sizes="(max-width: 767px) 90vw, (max-width: 1200px) 33vw, 400px"
+          loading=image_loading
+        }}
+      </figure>
+      {{> post-card-type-icon wrapper_class="scale-110 md:scale-125"}}
     </a>
   {{/if}}
+
+  <div class="flex flex-col gap-2.5 {{content_class}}" data-post-card-content>
+
+    {{!-- Post meta: tag / visibility / comment count --}}
+    {{> post-card-meta-top }}
+
+    {{!-- Title --}}
+    {{#if use_h2}}
+      <h2 class="text-base font-semibold md:text-lg leading-tight md:leading-[1.15] {{title_class}}" data-post-card-title>
+        <a href="{{url}}" class="hover:underline underline-offset-4">
+          <span>{{title}}</span>
+        </a>
+      </h2>
+    {{else}}
+      <h3 class="text-base font-semibold md:text-lg leading-tight md:leading-[1.15] {{title_class}}" data-post-card-title>
+        <a href="{{url}}" class="hover:underline underline-offset-4">
+          <span>{{title}}</span>
+        </a>
+      </h3>
+    {{/if}}
+
+    {{!-- Post meta: authors and date --}}
+    {{> post-card-meta-bottom }}
+    
+  </div>
 </article>

@@ -1,12 +1,28 @@
 <article class="{{post_class}} {{card_class}} relative flex flex-col gap-4 text-typ" data-post-card{{#if featured}} data-featured{{/if}}>
   {{!-- Feature Image --}}
-  {{#if (or feature_image fallback_image)}}
+  {{#if feature_image}}
     <a href="{{url}}" class="relative group {{media_class}}">
       <figure class="block rounded-theme overflow-hidden" role="none">
         {{> image
           image_type="post"
           image_class="w-full aspect-[16/9] object-cover rounded-[inherit] group-hover:opacity-90 transition-opacity"
-          image_url=(or feature_image fallback_image)
+          image_url=feature_image
+          size_s=true
+          size_m=true
+          size_l=true
+          sizes="(max-width: 767px) 90vw, (max-width: 1200px) 50vw, 600px"
+          loading=image_loading
+        }}
+      </figure>
+      {{> post-card-type-icon wrapper_class="scale-110 md:scale-125"}}
+    </a>
+  {{else if fallback_image}}
+    <a href="{{url}}" class="relative group {{media_class}}">
+      <figure class="block rounded-theme overflow-hidden" role="none">
+        {{> image
+          image_type="post"
+          image_class="w-full aspect-[16/9] object-cover rounded-[inherit] group-hover:opacity-90 transition-opacity"
+          image_url=fallback_image
           size_s=true
           size_m=true
           size_l=true
